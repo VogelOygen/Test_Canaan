@@ -5,49 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <TabControl>
+        <TabItem Header="Все данные">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <Button Content="Загрузить данные" Command="{Binding LoadDataCommand}"
-                    Width="150" Height="30" Margin="0,0,10,0"/>
-            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                     Width="200" Height="30" Margin="0,0,10,0"
-                     VerticalContentAlignment="Center"/>
-            <Button Content="Поиск" Command="{Binding SearchCommand}"
-                    Width="100" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Очистить" Command="{Binding ClearSearchCommand}"
-                    Width="100" Height="30"/>
-        </StackPanel>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+                    <Button Content="Обновить" Command="{Binding LoadDataCommand}"
+                            Width="150" Height="30" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                             Width="200" Height="30" Margin="0,0,10,0"
+                             VerticalContentAlignment="Center"/>
+                    <Button Content="Поиск" Command="{Binding SearchCommand}"
+                            Width="100" Height="30" Margin="0,0,10,0"/>
+                    <Button Content="Очистить" Command="{Binding ClearSearchCommand}"
+                            Width="100" Height="30"/>
+                </StackPanel>
 
-        <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Bookings}"
-                  SelectedItem="{Binding SelectedBooking}"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  Margin="10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер заявки" Binding="{Binding DealNumber}" Width="150"/>
-                <DataGridTextColumn Header="Заказчик" Binding="{Binding Customer}" Width="200"/>
-                <DataGridTextColumn Header="Туристов" Binding="{Binding Tourists}" Width="100"/>
-                <DataGridTextColumn Header="Ночей" Binding="{Binding Nights}" Width="80"/>
-                <DataGridTextColumn Header="Категория" Binding="{Binding HotelCategory}" Width="100"/>
-                <DataGridTextColumn Header="Тип" Binding="{Binding TourType}" Width="100"/>
-                <DataGridTextColumn Header="Программа" Binding="{Binding ProgramName}" Width="200"/>
-                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="120"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Bookings}"
+                          SelectedItem="{Binding SelectedBooking}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер заявки" Binding="{Binding DealNumber}" Width="150"/>
+                        <DataGridTextColumn Header="Заказчик" Binding="{Binding Customer}" Width="200"/>
+                        <DataGridTextColumn Header="Туристов" Binding="{Binding Tourists}" Width="100"/>
+                        <DataGridTextColumn Header="Ночей" Binding="{Binding Nights}" Width="80"/>
+                        <DataGridTextColumn Header="Категория" Binding="{Binding HotelCategory}" Width="100"/>
+                        <DataGridTextColumn Header="Тип" Binding="{Binding TourType}" Width="100"/>
+                        <DataGridTextColumn Header="Программа" Binding="{Binding ProgramName}" Width="200"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="{Binding Bookings.Count, StringFormat='Всего записей: {0}'}"
-                       VerticalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Text=" | " Margin="10,0" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding IsLoading, StringFormat='Загрузка: {0}'}"
-                       VerticalAlignment="Center"/>
-        </StackPanel>
-    </Grid>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="{Binding Bookings.Count, StringFormat='Всего записей: {0}'}"
+                               VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text=" | " Margin="10,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding IsLoading, StringFormat='Загрузка: {0}'}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </UserControl>

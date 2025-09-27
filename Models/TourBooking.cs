@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Test_Canaan.Models;
 
@@ -10,6 +11,7 @@ public class TourBooking
     public DateTime? DepartureDate { get; set; }
     public string? DepartureFlight { get; set; }
     public string? Tourists { get; set; }
+    public int TouristCount { get; set; }
     public int Nights { get; set; }
     public string? HotelCategory { get; set; }
     public DateTime? TourStartDate { get; set; }
@@ -24,13 +26,21 @@ public class TourBooking
     public decimal AdditionalFees { get; set; }
     public decimal Payment { get; set; }
     public decimal Debt { get; set; }
+    public decimal TotalDebt { get; set; }
+    public string? Commercial { get; set; }
     public string? Status { get; set; }
-    public string? TashkentHotel { get; set; }
-    public string? TashkentCategory { get; set; }
-    public string? SamarkandHotel { get; set; }
-    public string? SamarkandCategory { get; set; }
-    public string? BukharaHotel { get; set; }
-    public string? BukharaCategory { get; set; }
-    public string? KhivaHotel { get; set; }
-    public string? KhivaCategory { get; set; }
+
+    public List<HotelStay> TashkentHotels { get; set; } = new();
+    public List<HotelStay> SamarkandHotels { get; set; } = new();
+    public List<HotelStay> BukharaHotels { get; set; } = new();
+    public List<HotelStay> KhivaHotels { get; set; } = new();
+
+    public List<ServiceItem> AdditionalServices { get; set; } = new();
+    public List<TransportationInfo> Transportation { get; set; } = new();
+    public List<TransferInfo> Transfers { get; set; } = new();
+    public List<TravelTicket> Tickets { get; set; } = new();
+
+    public List<GuideService> Guides { get; set; } = new();
+    public List<TicketService> AttractionTickets { get; set; } = new();
+    public List<RestaurantService> Restaurants { get; set; } = new();
 }
